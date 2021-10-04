@@ -1,0 +1,178 @@
+//1. rotate an array
+void rotateArr(int arr[], int d, int n)
+    {
+        int temp,m=0;
+        for(int i=0,j=d-1;i<d/2;i++,j--)
+        {
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        for(int i=d,j=n-1;i<(d+n)/2;i++,j--)
+        {
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        for(int i=0,j=n-1;i<n/2;i++,j--)
+       {
+           temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+       }
+    }
+
+ //2. Function to return the position of the first repeating element.
+    int firstRepeated(int arr[], int n) {
+            map<int,int> result;
+            for(int i=0;i<n;i++)
+            result[arr[i]]++;
+            
+            for(int i=0;i<n;i++)
+            if(result[arr[i]]>1)
+            return(i+1);
+            
+            return -1;
+        // code here
+    }
+
+
+
+//4. reverse an array
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+
+	while(t--)
+	{
+	    int N;
+	    cin>>N;
+
+	    int a[N];
+	    for(int i=0;i<N;i++)
+	    cin>>a[i];
+	    
+	    for(int i=N-1;i>=0;i--)
+	    cout<<a[i]<<" ";
+	    cout<<endl;
+	    
+	}
+	return 0;
+}
+
+
+//5. k: find element smaller and closest to it. 
+    int immediateSmaller(int arr[], int n, int x)
+    {
+        int max=-1;
+        for(int i=0;i<n;i++)
+        {
+           
+            if(arr[i]<x&&arr[i]>max)
+            max=arr[i];
+        }// your code here
+        return max;
+    }
+
+//7. find pivot index
+
+    int pivotIndex(vector<int>& nums) {
+       int i, j;
+        int n=nums.size();
+    int leftsum, rightsum;
+    for (i = 0; i < n; ++i) 
+    {     
+        leftsum = 0; 
+        for (j = 0; j < i; j++)
+            leftsum += nums[j];
+        rightsum = 0; 
+        for (j = i + 1; j < n; j++)
+            rightsum += nums[j];
+
+        if (leftsum == rightsum)
+            return i;
+    }
+  
+    return -1;
+}
+
+//8. to check if an array is monotonic or not
+    bool isMonotonic(vector<int>& nums) {
+        int n=nums.size();
+        int inc=1,dec=1;
+        for(int i=0;i<n-1;i++)
+        {
+            if(nums[i]<=nums[i+1])
+                inc++;
+            if(nums[i]>=nums[i+1])
+                dec++;
+        }
+        if((inc==n) || (dec==n))
+            return true;
+        else
+            return false;
+    }
+};
+
+//9. leaders in array
+    vector<int> leaders(int a[], int n){
+        vector<int>b;
+        int max=a[n-1];//int count=0;
+        for(int i=n-1;i>=0;i--)
+       {
+               if(max<=a[i])
+                   {
+                       max=a[i];
+                       b.push_back(max);
+                   }
+           
+       }
+       reverse(b.begin(), b.end());
+       return b;
+    }
+
+
+
+//10. two sum
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int,int> result;
+        vector<int> vec;
+        int n=nums.size();
+        map<int,int>::iterator it;
+        int diff,i;
+        for(i=0;i<n;i++)
+            result[nums[i]]++;
+        for(i=0;i<n;i++)
+        {
+            diff=target-nums[i];
+            it=result.find(diff);
+            if(it!=result.end())
+            {
+                if(diff==nums[i] && result[nums[i]]>1)
+                {
+                    vec.push_back(i);
+                    break;
+                }
+                if(diff!=nums[i])
+                {
+                    vec.push_back(i);
+                    break;
+                }
+            }
+        
+        }
+         for(i=i+1;i<n;i++)
+             if(nums[i]==diff)
+             {
+                  vec.push_back(i);
+                    break;
+             }
+                
+        return vec;
+    }
+
+
+
