@@ -1,0 +1,178 @@
+#1 Maximum Occuring Character
+char getMaxOccuringChar(string str)
+    {
+        // Your code here
+        int count[256]={0};
+        int max=-1;
+        char alp;
+        
+        int l=str.size();
+        for(int i=0;i<l;i++)
+        {
+            count[str[i]]++;
+        }
+        
+        for(int i=0;i<l;i++)
+        {
+            if(max<count[str[i]])
+            {
+                max=count[str[i]];
+                alp=str[i];
+            }
+            else if(max==count[str[i]])
+            {
+                if(alp>str[i])
+                {
+                    alp=str[i];
+                }
+            }
+        }        
+        return alp;
+}
+
+#2Count number of words
+
+int countWords(string s)
+{
+    //code here.
+    int l=s.size();
+    int count=0;
+    int alp=0;
+    int i=0;
+    
+    while(i<l)
+    {
+        alp=0;
+        while(i<l && isalpha(s[i]))
+        {
+            alp=1;
+            i++;
+        }
+        
+        if(s[i]=='\\')
+        {
+            i+=2;
+        }
+        if(s[i]==' ')
+        {
+            i++;
+        }
+        
+        
+        if(alp==1)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+#3. Reverse String
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int n=s.size()-1;
+        int size=n/2;
+        for(int i=0;i<=size;i++)
+        {
+            char a=s[i];
+            s[i]=s[n];
+            s[n]=a;
+            n--;
+        }
+        
+    }
+};
+
+#4. Maximum occuring character
+char getMaxOccuringChar(string str)
+    {
+        map<char, int>freq;
+        int max=-1;
+        char result='z';
+        for(int i=0;i<str.length();i++)
+        {
+            freq[str[i]]++;
+        }
+     
+        for(int i=0;i<str.length();i++)
+        {
+           
+            if ( max < freq[str[i]])  
+            {
+            result = str[i];
+            max = freq[str[i]];
+            }
+            else if(max==freq[str[i]])
+            {
+                result=(str[i]<result) ? str[i] : result;
+                max = freq[str[i]];
+            }
+        }// Your code here
+        return(result);
+    }
+#5 search in a 2d matrix
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        int i=0,j=0;
+        
+        while(i<matrix.size() && j<matrix[i].size())
+        {
+            while((i+1)<matrix.size() && target>=matrix[i+1][j])
+            {
+                i+=1;
+            }
+            
+            while(j<matrix[i].size() && target!=matrix[i][j])
+            {
+                j+=1;
+            }
+            
+            if(i<matrix.size() && j<matrix[i].size() && target==matrix[i][j])
+            {
+                return true;
+            }
+            
+            return false;
+        }
+        
+        return false;
+        
+        
+    }
+};
+
+#6Search a 2D Matrix II
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        int m=matrix.size();
+        int n=matrix[0].size();
+        
+        int i=0;
+        int j=n-1;
+        
+        while(i>=0 && i<m && j>=0 && j<n)
+        {
+            if(matrix[i][j]==target)
+            {
+                return true;
+            }
+            else if(matrix[i][j]>target)
+            {
+                j--;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        
+        return false;
+        
+    }
+};
+
