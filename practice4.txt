@@ -1,0 +1,96 @@
+#1 Power of two
+bool power(int n,long long a,long long b)
+    {
+        if(n==a)
+        {
+            return true;
+        }
+        else if(n<a)
+        {
+            return false;
+        }
+        
+        a=pow(2,b);
+        b++;
+        return power(n,a,b);
+    }
+    bool isPowerOfTwo(int n) {
+        
+        if(n==0)
+        {
+            return false;
+        }
+        else
+        {
+            return power(n,0,0);
+        }
+    }
+
+#2 Fibonacci Number
+int fib(int n) {
+        
+        if(n==0)
+        {
+            return 0;
+        }
+        else if(n==1)
+        {
+            return 1;
+        }
+        
+        int a = fib(n-1) + fib(n-2);
+        return a;
+    }
+
+#3Factorial
+
+long long int factorial(int N){
+       //code here
+       if(N==0)
+       {
+           return 1;
+       }
+       
+       long long int a = N*factorial(N-1);
+       return a;
+       
+}
+
+#4 Print 1 to n without using loops
+
+    void printTillN(int N)
+    {
+        // Write Your Code here
+        if(N<1)
+       {
+          return;
+       }
+       printTillN(N-1);
+       cout<<N<<" ";
+    }
+
+#5 Reverse String
+void reverseString(vector<char>& s) {
+        
+        int l=s.size();
+        int low=0,high=l-1;
+        swap(s,low,high);
+        
+    }
+    
+    void swap(vector<char>& s,int low,int high)
+    {
+        int temp;
+        
+        if(low>high)
+        {
+            return;
+        }
+        else
+        {
+            temp=s[low];
+            s[low]=s[high];
+            s[high]=temp;
+            
+            swap(s,low+1,high-1);   
+        }
